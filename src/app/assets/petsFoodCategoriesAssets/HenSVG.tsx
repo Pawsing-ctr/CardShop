@@ -1,7 +1,7 @@
 import { IIcon } from '@/app/types/Icon';
 import React from 'react';
 
-const HenSVG = ({width="44", height="55", color="white"}:IIcon) => {
+const HenSVG = ({width="44", height="54", color="black"}:IIcon) => {
     return (
         <svg fill={color} height={height} width={width} version="1.1" id="Layer_1"  
         viewBox="0 0 512 512" >

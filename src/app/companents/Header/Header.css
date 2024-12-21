@@ -43,3 +43,35 @@
 .basket-svg-block{
     cursor: pointer;
 }
+
+/* .login-modal{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.login-title{
+    font-size: 34px;
+}
+
+.password-input,
+.login-input{
+    height: 30px;
+    max-width: 300px;
+    border-radius: 20px;
+    font-size: 20px;
+}
+
+
+.login-button{
+    background-color: #fff;
+    cursor: pointer;
+    border: solid 4px green;
+    border-radius: 10px;
+    max-width: 400px;
+} */
+
+.all-registration-modal{
+    display: flex;
+    gap: 40px;
+}

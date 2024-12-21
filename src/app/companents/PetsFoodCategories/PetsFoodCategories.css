@@ -1,0 +1,52 @@
+.petsCategories-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(153, 153, 153, 0.13);
+    border-radius: 55px;
+    width: 110px;
+    height: 110px;
+    cursor: pointer;
+}
+
+.all-petsCategories{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 30px;
+}
+
+.petsFoodCategories-title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.title{
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 120%;
+    color: #362526;
+}
+
+.petsFood-view{
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 150%;
+    text-transform: uppercase;
+    color: #362526;
+}
+
+.categories-text{
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 150%;
+    text-transform: uppercase;
+    text-align: center;
+    color: #362526;
+    padding-top: 20px;
+}
+
+.all-petsFoodCategories{
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 31px;
+}

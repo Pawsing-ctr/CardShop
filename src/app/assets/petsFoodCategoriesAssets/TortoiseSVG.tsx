@@ -1,7 +1,7 @@
 import { IIcon } from '@/app/types/Icon';
 import React from 'react';
 
-const TortoiseSVG = ({width="44", height="55", color="white"}:IIcon) => {
+const TortoiseSVG = ({width="44", height="54", color="black"}:IIcon) => {
     return (
         <svg fill={color} height={height} width={width} version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" 
         viewBox="0 0 511.999 511.999" >
