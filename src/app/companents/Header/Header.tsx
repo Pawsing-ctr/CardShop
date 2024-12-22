@@ -6,7 +6,11 @@ import SearchSvg from "@/app/assets/headerAssets/SearchSvg";
 import BasketSvg from "@/app/assets/headerAssets/BasketSvg";
 import LoginModal from "../Modal/LoginModal/LoginModal";
 import RegistrationModal from "../Modal/RegistrationModal/RegistrationModal";
-import { constLoginInput, constRegistrationInput } from "@/app/constants/constInput";
+import {
+  constLoginInput,
+  constRegistrationEmailInput,
+  constRegistrationPasswordInput,
+} from "@/app/constants/constInput";
 
 const Header: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -15,7 +19,7 @@ const Header: React.FC = () => {
   const openRegistrationModal = () => {
     setIsModalOpen(false);
     setIsModalOpenRegistration(true);
-  }
+  };
 
   return (
     <div>
@@ -39,39 +43,69 @@ const Header: React.FC = () => {
               Войти в аккаунт
             </button>
 
-            <LoginModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+            <LoginModal
+              isOpen={isModalOpen}
+              onClose={() => setIsModalOpen(false)}
+            >
               <div className="all-login-modal">
-                  <div className="login-data">
-                    {constLoginInput.map((el) => {
-                      return (
-                        <div key={el.id}>
-                          <p className={el.textClassName}>{el.title}</p>
-                          <input className={el.inputClassName} type="text" />
-                        </div>
-                      )
-                    })}
-                  </div>
-                  <div className="login-active-block">
-                  <div className="login-save-account">
-                      <p className="login-title-account">Забыли пароль?</p>
-                      <p onClick={openRegistrationModal} className="login-title-account">Зарегестрироваться</p>
+                <div className="login-data">
+                  {constLoginInput.map((el) => {
+                    return (
+                      <div key={el.id}>
+                        <p className={el.textClassName}>{el.title}</p>
+                        <input className={el.inputClassName} type="text" />
                       </div>
+                    );
+                  })}
+                </div>
+                <div className="login-active-block">
+                  <div className="login-save-account">
+                    <p className="login-title-account">Забыли пароль?</p>
+                    <p
+                      onClick={openRegistrationModal}
+                      className="login-title-account"
+                    >
+                      Зарегестрироваться
+                    </p>
+                  </div>
                   <div className="sign-in-block">
-                  <button className="sign-in-button">Войти</button>
+                    <button className="sign-in-button">Войти</button>
                   </div>
-                  </div>
+                </div>
               </div>
             </LoginModal>
-            <RegistrationModal isOpen={isModalOpenRegistration} onClose={() => setIsModalOpenRegistration(false)}>
+            <RegistrationModal
+              isOpen={isModalOpenRegistration}
+              onClose={() => setIsModalOpenRegistration(false)}
+            >
               <div className="all-registration-modal">
-                {constRegistrationInput.map((el) => {
-                  return (
-                    <div key={el.id}>
-                      <p className={el.textClassName}>{el.title}</p>
-                      <input className={el.inputClassName} type="text" />
-                    </div>
-                  )
-                })}
+                <div>
+                  {constRegistrationEmailInput.map((el) => {
+                    return (
+                      <div className="qwerqwe" key={el.id}>
+                        <p className={el.textClassName}>{el.title}</p>
+                        <input className={el.inputClassName} type="text" />
+                      </div>
+                    )
+                  })}
+                  <div className="email-button-block">
+                  <button className="email-button">Отправить код повторно</button>
+                  </div>
+                  
+                </div>
+                <div className="registration-input-block">
+                  {constRegistrationPasswordInput.map((el) => {
+                    return (
+                      <div key={el.id}>
+                        <p className={el.textClassName}>{el.title}</p>
+                        <input className={el.inputClassName} type="text" />
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className="registration-button-block">
+                  <button className="">Зарегестрироваться</button>
+                </div>
               </div>
             </RegistrationModal>
           </div>
