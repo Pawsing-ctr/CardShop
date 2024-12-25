@@ -7,19 +7,39 @@ import BasketSvg from "@/app/assets/headerAssets/BasketSvg";
 import LoginModal from "../Modal/LoginModal/LoginModal";
 import RegistrationModal from "../Modal/RegistrationModal/RegistrationModal";
 import {
-  constLoginInput,
   constRegistrationEmailInput,
   constRegistrationPasswordInput,
 } from "@/app/constants/constInput";
+import LoginInput from "../LoginInput/LoginInput";
+import { useRouter } from "next/navigation";
 
 const Header: React.FC = () => {
+  const router = useRouter();
+  const correctAdminDataEmail = "tnechayev@internet.ru";
+  const correctAdminDataPassword = "qwerty"
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpenRegistration, setIsModalOpenRegistration] = useState(false);
+   const [inputData, setInputData] = useState<Record<string, string>>({});
+      const handleChangeInput = (value: string, name:string) => {
+      setInputData((prev) => ({
+          ...prev, [name]: value,
+      }))
+  }
 
   const openRegistrationModal = () => {
     setIsModalOpen(false);
     setIsModalOpenRegistration(true);
   };
+
+  const handleLoginAcc = () =>{
+    if(inputData.EmailLogin === correctAdminDataEmail){
+      if(inputData.PasswordLogin === correctAdminDataPassword){
+        router.push("/Adminka")
+      }
+    } else{
+      return 
+    }
+  }
 
   return (
     <div>
@@ -48,16 +68,7 @@ const Header: React.FC = () => {
               onClose={() => setIsModalOpen(false)}
             >
               <div className="all-login-modal">
-                <div className="login-data">
-                  {constLoginInput.map((el) => {
-                    return (
-                      <div key={el.id}>
-                        <p className={el.textClassName}>{el.title}</p>
-                        <input className={el.inputClassName} type="text" />
-                      </div>
-                    );
-                  })}
-                </div>
+                <LoginInput inputData={inputData} handleChangeInput={handleChangeInput} />
                 <div className="login-active-block">
                   <div className="login-save-account">
                     <p className="login-title-account">Забыли пароль?</p>
@@ -69,7 +80,7 @@ const Header: React.FC = () => {
                     </p>
                   </div>
                   <div className="sign-in-block">
-                    <button className="sign-in-button">Войти</button>
+                    <button onClick={handleLoginAcc} className="sign-in-button">Войти</button>
                   </div>
                 </div>
               </div>
