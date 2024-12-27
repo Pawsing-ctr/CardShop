@@ -16,30 +16,32 @@ import { useRouter } from "next/navigation";
 const Header: React.FC = () => {
   const router = useRouter();
   const correctAdminDataEmail = "tnechayev@internet.ru";
-  const correctAdminDataPassword = "qwerty"
+  const correctAdminDataPassword = "qwerty";
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpenRegistration, setIsModalOpenRegistration] = useState(false);
-   const [inputData, setInputData] = useState<Record<string, string>>({});
-      const handleChangeInput = (value: string, name:string) => {
-      setInputData((prev) => ({
-          ...prev, [name]: value,
-      }))
-  }
+  const [inputData, setInputData] = useState<Record<string, string>>({});
+  const handleChangeInput = (value: string, name: string) => {
+    setInputData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
   const openRegistrationModal = () => {
     setIsModalOpen(false);
     setIsModalOpenRegistration(true);
   };
 
-  const handleLoginAcc = () =>{
-    if(inputData.EmailLogin === correctAdminDataEmail){
-      if(inputData.PasswordLogin === correctAdminDataPassword){
-        router.push("/Adminka")
+  const handleLoginAcc = () => {
+    if (inputData.EmailLogin === correctAdminDataEmail) {
+      if (inputData.PasswordLogin === correctAdminDataPassword) {
+        router.push("/admin");
+        setIsModalOpen(false);
       }
-    } else{
-      return 
+    } else {
+      return;
     }
-  }
+  };
 
   return (
     <div>
@@ -68,7 +70,10 @@ const Header: React.FC = () => {
               onClose={() => setIsModalOpen(false)}
             >
               <div className="all-login-modal">
-                <LoginInput inputData={inputData} handleChangeInput={handleChangeInput} />
+                <LoginInput
+                  inputData={inputData}
+                  handleChangeInput={handleChangeInput}
+                />
                 <div className="login-active-block">
                   <div className="login-save-account">
                     <p className="login-title-account">Забыли пароль?</p>
@@ -80,7 +85,9 @@ const Header: React.FC = () => {
                     </p>
                   </div>
                   <div className="sign-in-block">
-                    <button onClick={handleLoginAcc} className="sign-in-button">Войти</button>
+                    <button onClick={handleLoginAcc} className="sign-in-button">
+                      Войти
+                    </button>
                   </div>
                 </div>
               </div>
@@ -97,12 +104,13 @@ const Header: React.FC = () => {
                         <p className={el.textClassName}>{el.title}</p>
                         <input className={el.inputClassName} type="text" />
                       </div>
-                    )
+                    );
                   })}
                   <div className="email-button-block">
-                  <button className="email-button">Отправить код повторно</button>
+                    <button className="email-button">
+                      Отправить код повторно
+                    </button>
                   </div>
-                  
                 </div>
                 <div className="registration-input-block">
                   {constRegistrationPasswordInput.map((el) => {
