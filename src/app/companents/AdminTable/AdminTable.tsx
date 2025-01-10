@@ -11,7 +11,8 @@ type Product = {
 };
 
 const ProductTable = () => {
-  const [data, setData] = useState<Product[]>([]);
+  // const [data, setData] = useState<Product[]>([]);
+
   const [newProduct, setNewProduct] = useState<Product>({
     id: "",
     photo: "",
@@ -19,20 +20,35 @@ const ProductTable = () => {
     description: "",
     price: "",
   });
+  console.log(newProduct);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setNewProduct((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleAddProduct = () => {
-    setData((prev) => [...prev, newProduct]);
-    setNewProduct({ id: "", photo: "", name: "", description: "", price: "" });
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:3005/api/data", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newProduct),
+      });
+      const result = await response.json();
+      console.log(result.message); // Уведомление об успешной записи
+    } catch (error) {
+      console.error("Ошибка при отправке данных:", error);
+    }
+    // setData((prev) => [...prev, newProduct]);
+    // setNewProduct({ id: "", photo: "", name: "", description: "", price: "" });
   };
 
   return (
     <div>
-      <table>
+      <table onSubmit={handleSubmit}>
         <thead>
           <tr>
             <th>ID</th>
@@ -48,12 +64,15 @@ const ProductTable = () => {
               Добавить продукт
             </td>
           </tr>
+
           <tr className="input-make-new-product">
             <td>
               <input
                 className="addProducInput"
-                type="text"
+                type="number"
                 name="id"
+                placeholder="id"
+                value={newProduct.id}
                 onChange={handleInputChange}
               />
             </td>
@@ -62,6 +81,8 @@ const ProductTable = () => {
                 className="addProducInput"
                 type="text"
                 name="photo"
+                placeholder="Фото продукта"
+                value={newProduct.photo}
                 onChange={handleInputChange}
               />
             </td>
@@ -70,6 +91,8 @@ const ProductTable = () => {
                 className="addProducInput"
                 type="text"
                 name="name"
+                placeholder="Название"
+                value={newProduct.name}
                 onChange={handleInputChange}
               />
             </td>
@@ -78,35 +101,32 @@ const ProductTable = () => {
                 className="addProducInput"
                 type="text"
                 name="description"
+                placeholder="Описание"
+                value={newProduct.description}
                 onChange={handleInputChange}
               />
             </td>
-
             <td>
               <input
                 className="addProducInput"
-                type="text"
+                type="number"
                 name="price"
+                placeholder="Цена"
+                value={newProduct.price}
                 onChange={handleInputChange}
               />
-              <button onClick={handleAddProduct}>Добавить продукт</button>
+              <button onClick={handleSubmit}>Добавить продукт</button>
             </td>
+            {/* {data.map((product, id) => (
+              <tr key={id}>
+                <td>{product.id}</td>
+                <td></td>
+                <td>{product.name}</td>
+                <td>{product.description}</td>
+                <td>{product.price}</td>
+              </tr>
+            ))} */}
           </tr>
-          {data.map((product, id) => (
-            <tr key={id}>
-              <td>{product.id}</td>
-              <td>
-                {/* <img
-                  src={product.photo}
-                  alt="product"
-                  style={{ width: "50px" }}
-                /> */}
-              </td>
-              <td>{product.name}</td>
-              <td>{product.description}</td>
-              <td>{product.price}</td>
-            </tr>
-          ))}
         </tbody>
       </table>
     </div>
