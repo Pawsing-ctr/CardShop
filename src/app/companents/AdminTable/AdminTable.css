@@ -23,3 +23,17 @@ table {
   button {
     margin-top: 0px;
   }
+
+  .add-product-title{
+    align-items: center;
+    font-weight: bold;
+  }
+
+  .error-text{
+    color: rgb(171, 66, 62);
+    background-color: rgb(244, 222, 225);
+  }
+
+  .add-product-input-photo{
+    width: 177px;
+  }

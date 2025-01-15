@@ -2,15 +2,15 @@
 import { petsFoodCategoriesConst } from "@/app/constants/petsFoodCategoriesConst";
 import "../PetsFoodCategories/PetsFoodCategories.css";
 import { useEffect, useState } from "react";
+import IProduct from "@/app/types/product";
+import axios from "axios";
+import { apiUrl } from "@/app/constants/apiConst";
 
 const PetsFoodCategories = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<IProduct[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:3005/api/data")
-      .then((response) => response.json())
-      .then((json) => setData(json))
-      .catch((error) => console.error("Ошибка при получении данных:", error));
+    axios.get(apiUrl).then((response) => setData(response.data));
   }, []);
 
   return (
