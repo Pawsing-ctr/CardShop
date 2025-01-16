@@ -2,9 +2,8 @@
 import React, { useState } from "react";
 import "../AdminTable/AdminTable.css";
 import IProduct from "@/app/types/product";
-import axios from "axios";
-import { apiUrl } from "@/app/constants/apiConst";
 import { z } from "zod";
+import { createProduct } from "@/app/api/apiProducts";
 
 const productScheme = z.object({
   id: z
@@ -29,7 +28,9 @@ const initialProduct = {
 };
 
 const ProductTable = () => {
-  const [data, setData] = useState<IProduct[]>([]);
+  const [products, setProducts] = useState<IProduct[]>([]);
+  console.log(products);
+
   const [newProduct, setNewProduct] = useState<IProduct>(initialProduct);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -46,6 +47,7 @@ const ProductTable = () => {
     } else {
       setErrors({});
     }
+    return result.success;
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,15 +57,15 @@ const ProductTable = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    handleSchemeCheckError();
-    try {
-      const response = await axios.post(apiUrl, newProduct);
-      const result = response.data;
-      setData(result.data);
-      setNewProduct(initialProduct);
-    } catch (error) {
-      console.error("Ошибка при отправке данных:", error);
+
+    const resultCheckError = handleSchemeCheckError();
+    if (resultCheckError === false) {
+      return console.log("Ошибка при отправке данных");
     }
+    const productResponse = await createProduct(newProduct);
+
+    setProducts([productResponse]);
+    setNewProduct(initialProduct);
   };
 
   return (
@@ -135,18 +137,18 @@ const ProductTable = () => {
               />
             </td>
           </tr>
+          <tr>
+            <td className="add-product-title" colSpan={5}>
+              <button onClick={handleSubmit}>Добавить товар</button>
+            </td>
+          </tr>
+          <tr>
+            <td className="add-product-title" colSpan={5}>
+              Новые товары
+            </td>
+          </tr>
         </tbody>
-        <tr>
-          <td className="add-product-title" colSpan={5}>
-            <button onClick={handleSubmit}>Добавить товар</button>
-          </td>
-        </tr>
-        <tr>
-          <td className="add-product-title" colSpan={5}>
-            Новые товары
-          </td>
-        </tr>
-        {data.map((product, id) => (
+        {products.map((product, id) => (
           <tr key={id}>
             <td>{product.id}</td>
             <td></td>

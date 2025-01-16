@@ -3,14 +3,13 @@ import { petsFoodCategoriesConst } from "@/app/constants/petsFoodCategoriesConst
 import "../PetsFoodCategories/PetsFoodCategories.css";
 import { useEffect, useState } from "react";
 import IProduct from "@/app/types/product";
-import axios from "axios";
-import { apiUrl } from "@/app/constants/apiConst";
+import { getProducts } from "@/app/api/apiProducts";
 
 const PetsFoodCategories = () => {
-  const [data, setData] = useState<IProduct[]>([]);
+  const [products, setProducts] = useState<IProduct[]>([]);
 
   useEffect(() => {
-    axios.get(apiUrl).then((response) => setData(response.data));
+    getProducts().then((response) => setProducts(response));
   }, []);
 
   return (
@@ -30,10 +29,7 @@ const PetsFoodCategories = () => {
         })}
       </div>
       <ul>
-        {data.map((el, index) => (
-          // <li key={index}>
-          //   {item.name} - {item.price} ₽
-          // </li>
+        {products.map((el, index) => (
           <div key={index}>
             <img src={el.photo} alt="" />
             <p>{el.name}</p>
