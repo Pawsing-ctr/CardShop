@@ -1,16 +1,23 @@
 "use client";
 import { petsFoodCategoriesConst } from "@/app/constants/petsFoodCategoriesConst";
-import "../PetsFoodCategories/PetsFoodCategories.css";
+import "./PetsFoodCategories.css";
 import { useEffect, useState } from "react";
-import IProduct from "@/app/types/product";
 import { getProducts } from "@/app/api/apiProducts";
+import IProduct from "@/app/types/product";
+import ProductSlider from "../ProductSlider/ProductSlider";
 
 const PetsFoodCategories = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
+  console.log(products);
 
   useEffect(() => {
-    getProducts().then((response) => setProducts(response));
+    productDesignation();
   }, []);
+
+  const productDesignation = async () => {
+    const getServerProducts = await getProducts();
+    setProducts(getServerProducts);
+  };
 
   return (
     <div className="all-petsFoodCategories">
@@ -28,15 +35,21 @@ const PetsFoodCategories = () => {
           );
         })}
       </div>
-      <ul>
-        {products.map((el, index) => (
-          <div key={index}>
-            <img src={el.photo} alt="" />
-            <p>{el.name}</p>
-            <p>{el.description}</p>
-          </div>
-        ))}
+      <ul className="products-list">
+        {/* {products.map((product) => (
+          <li key={product.id} className="product-item">
+            <img
+              src={product.photo || "/placeholder.svg"}
+              alt={product.name}
+              className="product-image"
+            />
+            <p className="product-name">{product.name}</p>
+            <p className="product-description">{product.description}</p>
+            <p className="product-price">{product.price}</p>
+          </li>
+        ))} */}
       </ul>
+      <ProductSlider products={products} />
     </div>
   );
 };

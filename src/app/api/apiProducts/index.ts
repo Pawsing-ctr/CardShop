@@ -1,21 +1,33 @@
+import { productsPath } from "./productsPath";
 import IProduct from "@/app/types/product";
 import $api from "../$api";
-import { productsPath } from "./productsPath";
 
-export const getProducts = async () => {
+export const createProduct = async (
+  formData: FormData
+): Promise<{ data: IProduct }> => {
   try {
-    const { data } = await $api.get(productsPath.ALL_PRODUCTS);
-    return data;
+    const response = await $api.post<{ data: IProduct }>(
+      productsPath.ALL_PRODUCTS,
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+    return response.data;
   } catch (error) {
-    return error;
+    console.error("Error creating product:", error);
+    throw error;
   }
 };
 
-export const createProduct = async (newProduct: IProduct) => {
+export const getProducts = async (): Promise<IProduct[]> => {
   try {
-    const { data } = await $api.post(productsPath.ALL_PRODUCTS, newProduct);
-    return data;
+    const response = await $api.get<IProduct[]>(productsPath.ALL_PRODUCTS);
+    return response.data;
   } catch (error) {
-    return error;
+    console.error("Error fetching products:", error);
+    throw error;
   }
 };

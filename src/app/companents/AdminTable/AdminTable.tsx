@@ -1,9 +1,10 @@
 "use client";
-import React, { useState } from "react";
-import "../AdminTable/AdminTable.css";
-import IProduct from "@/app/types/product";
+import type React from "react";
+import { useState, useEffect } from "react";
+import "./AdminTable.css";
 import { z } from "zod";
-import { createProduct } from "@/app/api/apiProducts";
+import { createProduct, getProducts } from "@/app/api/apiProducts";
+import type IProduct from "@/app/types/product";
 
 const productScheme = z.object({
   id: z
@@ -13,7 +14,6 @@ const productScheme = z.object({
       message:
         "Id нового продукта не должен совпадать с id уже существующего продукта",
     }),
-  photo: z.string(),
   name: z.string().min(1, "Название продукта обязательно"),
   description: z.string().min(1, "Описание продукта обязательно"),
   price: z.string().min(1, "Цена на продукт обязательна"),
@@ -21,28 +21,37 @@ const productScheme = z.object({
 
 const initialProduct = {
   id: "",
-  photo: "",
   name: "",
   description: "",
   price: "",
 };
 
-const ProductTable = () => {
+const AdminTable = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
-  console.log(products);
-
-  const [newProduct, setNewProduct] = useState<IProduct>(initialProduct);
+  const [newProduct, setNewProduct] = useState(initialProduct);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [file, setFile] = useState<File | null>(null);
+
+  useEffect(() => {
+    adminGetProductsList();
+  }, []);
+
+  const adminGetProductsList = async () => {
+    const getServerProducts = await getProducts();
+    setProducts(getServerProducts);
+  };
 
   const handleSchemeCheckError = () => {
     const result = productScheme.safeParse(newProduct);
 
     if (!result.success) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const fieldErrors: any = {};
+      const fieldErrors: Record<string, string> = {};
       result.error.errors.forEach((err) => {
-        fieldErrors[err.path[0]] = err.message;
+        if (typeof err.path[0] === "string") {
+          fieldErrors[err.path[0]] = err.message;
+        }
       });
+      console.log("Ошибка при отправке данных");
       setErrors(fieldErrors);
     } else {
       setErrors({});
@@ -55,17 +64,38 @@ const ProductTable = () => {
     setNewProduct((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setFile(e.target.files[0]);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const resultCheckError = handleSchemeCheckError();
-    if (resultCheckError === false) {
+    if (resultCheckError === false || !file) {
       return console.log("Ошибка при отправке данных");
     }
-    const productResponse = await createProduct(newProduct);
 
-    setProducts([productResponse]);
-    setNewProduct(initialProduct);
+    const formData = new FormData();
+    Object.entries(newProduct).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
+    formData.append("image", file);
+
+    try {
+      const productResponse = await createProduct(formData);
+      console.log(formData);
+
+      if (productResponse.data) {
+        setProducts([...products, productResponse.data]);
+        setNewProduct(initialProduct);
+        setFile(null);
+      }
+    } catch (error) {
+      console.error("Ошибка при создании продукта:", error);
+    }
   };
 
   return (
@@ -101,9 +131,9 @@ const ProductTable = () => {
             <td>
               <input
                 className="add-product-input-photo"
+                name="image"
                 type="file"
-                value={newProduct.photo}
-                onChange={handleInputChange}
+                onChange={handleFileChange}
               />
             </td>
             <td>
@@ -147,19 +177,25 @@ const ProductTable = () => {
               Новые товары
             </td>
           </tr>
+          {products.map((product) => (
+            <tr key={product.id}>
+              <td>{product.id}</td>
+              <td>
+                <img
+                  src={product.photo || "/placeholder.svg"}
+                  alt={product.name}
+                  className="adminProductImg"
+                />
+              </td>
+              <td>{product.name}</td>
+              <td>{product.description}</td>
+              <td>{product.price}</td>
+            </tr>
+          ))}
         </tbody>
-        {products.map((product, id) => (
-          <tr key={id}>
-            <td>{product.id}</td>
-            <td></td>
-            <td>{product.name}</td>
-            <td>{product.description}</td>
-            <td>{product.price}</td>
-          </tr>
-        ))}
       </table>
     </div>
   );
 };
 
-export default ProductTable;
+export default AdminTable;
