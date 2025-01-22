@@ -1,4 +1,12 @@
 .product-image{
-  width: 400px;
-  height: 400px;
+  width: 200px;
+  height: 200px;
+}
+
+.slider-product{
+  display: flex;
+}
+
+.all-product-slider{
+  overflow: hidden;
 }
