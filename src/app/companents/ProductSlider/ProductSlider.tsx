@@ -40,23 +40,23 @@ const ProductSlider = () => {
               />
               <p className="product-name">{product.name}</p>
               <p className="product-description">{product.description}</p>
-              <p className="product-price">{product.price}</p>
+              <p className="product-price">{product.price} ₽</p>
             </div>
           ))}
         </div>
       </div>
-      <button
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow"
-        onClick={scrollPrev}
-      >
-        &#8592; {/* Left arrow */}
-      </button>
-      <button
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow"
-        onClick={scrollNext}
-      >
-        &#8594; {/* Right arrow */}
-      </button>
+      {products.length < 6 ? (
+        ""
+      ) : (
+        <div>
+          <button className="" onClick={scrollPrev}>
+            &#8592;
+          </button>
+          <button className="" onClick={scrollNext}>
+            &#8594;
+          </button>
+        </div>
+      )}
     </div>
   );
 };

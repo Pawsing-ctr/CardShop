@@ -5,8 +5,24 @@
 
 .slider-product{
   display: flex;
+  gap: 50px;
 }
 
 .all-product-slider{
   overflow: hidden;
+}
+
+.product-description,
+.product-name{
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 120%;
+  color: #362526;
+}
+
+.product-price{
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 120%;
+  color: #362526;
 }

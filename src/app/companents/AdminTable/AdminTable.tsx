@@ -5,6 +5,8 @@ import "./AdminTable.css";
 import { z } from "zod";
 import { createProduct, getProducts } from "@/app/api/apiProducts";
 import type IProduct from "@/app/types/product";
+import $api from "@/app/api/$api";
+import { productsPath } from "@/app/api/apiProducts/productsPath";
 
 const productScheme = z.object({
   id: z
@@ -27,6 +29,7 @@ const initialProduct = {
 };
 
 const AdminTable = () => {
+  // все мои данные в products
   const [products, setProducts] = useState<IProduct[]>([]);
   const [newProduct, setNewProduct] = useState(initialProduct);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -86,7 +89,6 @@ const AdminTable = () => {
 
     try {
       const productResponse = await createProduct(formData);
-      console.log(formData);
 
       if (productResponse.data) {
         setProducts([...products, productResponse.data]);
@@ -95,6 +97,15 @@ const AdminTable = () => {
       }
     } catch (error) {
       console.error("Ошибка при создании продукта:", error);
+    }
+  };
+
+  const handleDeleteProduct = async (id: string) => {
+    try {
+      await $api.delete(`${productsPath.ALL_PRODUCTS}ффф/${id}`);
+      setProducts(products.filter((product) => product.id !== id));
+    } catch (error) {
+      console.error("Ошибка при удалении продукта:", error);
     }
   };
 
@@ -190,6 +201,9 @@ const AdminTable = () => {
               <td>{product.name}</td>
               <td>{product.description}</td>
               <td>{product.price}</td>
+              <button onClick={() => handleDeleteProduct(product.id)}>
+                Удалить продукт
+              </button>
             </tr>
           ))}
         </tbody>
