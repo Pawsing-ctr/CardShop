@@ -1,0 +1,31 @@
+
+.flash-sale-offer-text{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.flash-sale-offer-button{
+  border-radius: 10px;
+  width: 264px;
+  height: 45px;
+  cursor: pointer;
+  background: #433434;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  text-transform: uppercase;
+  color: #fff;
+  border: none;
+}
+
+.flash-sale-block{
+  display: flex;
+  gap: 50px;
+}
+
+.flash-sale-offer{
+  border-radius: 15px 0 0 15px;
+  background: #362526;
+  padding: 30px;
+}

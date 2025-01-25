@@ -29,7 +29,10 @@ const ProductSlider = () => {
 
   return (
     <div className="all-product-slider">
-      <div className="product-list" ref={emblaRef}>
+      <div>
+        <p className="slider-text-title">Hand-Picked Foods</p>
+      </div>
+      {products.length < 6 ? (
         <div className="slider-product">
           {products.map((product) => (
             <div key={product.id}>
@@ -44,7 +47,25 @@ const ProductSlider = () => {
             </div>
           ))}
         </div>
-      </div>
+      ) : (
+        <div className="product-list" ref={emblaRef}>
+          <div className="slider-product">
+            {products.map((product) => (
+              <div key={product.id}>
+                <img
+                  src={product.photo || "/placeholder.svg"}
+                  alt={product.name}
+                  className="product-image"
+                />
+                <p className="product-name">{product.name}</p>
+                <p className="product-description">{product.description}</p>
+                <p className="product-price">{product.price} ₽</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {products.length < 6 ? (
         ""
       ) : (

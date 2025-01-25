@@ -10,6 +10,12 @@
 
 .all-product-slider{
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 30px;
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
 }
 
 .product-description,
@@ -25,4 +31,25 @@
   font-size: 18px;
   line-height: 120%;
   color: #362526;
+}
+
+.slider-text-title{
+font-weight: 700;
+font-size: 24px;
+line-height: 120%;
+text-transform: capitalize;
+color: #362526;
+}
+
+.flash-sale-offer{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.flash-sale-title{
+font-weight: 500;
+font-size: 24px;
+line-height: 120%;
+color: #fff;
 }

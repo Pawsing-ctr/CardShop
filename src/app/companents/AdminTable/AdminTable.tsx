@@ -102,7 +102,7 @@ const AdminTable = () => {
 
   const handleDeleteProduct = async (id: string) => {
     try {
-      await $api.delete(`${productsPath.ALL_PRODUCTS}ффф/${id}`);
+      await $api.delete(`${productsPath.ALL_PRODUCTS}/${id}`);
       setProducts(products.filter((product) => product.id !== id));
     } catch (error) {
       console.error("Ошибка при удалении продукта:", error);

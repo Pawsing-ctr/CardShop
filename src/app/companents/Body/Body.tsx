@@ -1,13 +1,15 @@
 import React from "react";
 import PetsFoodCategories from "../PetsFoodCategories/PetsFoodCategories";
 import ProductSlider from "../ProductSlider/ProductSlider";
-// import Container from '../Container/Container';
+import "./Body.css";
+import FlashSale from "../FlashSale/FlashSale";
 
 const Body: React.FC = () => {
   return (
-    <div>
+    <div className="all-page-content">
       <PetsFoodCategories />
       <ProductSlider />
+      <FlashSale />
     </div>
   );
 };
