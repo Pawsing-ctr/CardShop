@@ -1,4 +1,4 @@
-table {
+/* table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
@@ -43,4 +43,89 @@ table {
     height: 59px;
   }
 
+  */
+
+  .add-product-block{
+    background-color: #323332FF;
+    border-radius: 22px;
+    width: 676px; 
+     height: 768px;
+  }
+
+  .all-admin-page{
+    display: flex;
+  }
+
+  .input-addproduct-block{
+   display: flex;
+   flex-direction: column;
+   padding: 24px;
+   gap: 16px;
+  }
+
+  .title-add-product{
+    font-size: 26px; 
+    line-height: 40px; 
+    font-weight: 700; 
+    color: #D2D2D2FF; 
+  }
+
+  .input-title{
+    font-size: 17px; 
+    line-height: 26px; 
+    font-weight: 400; 
+    color: #BABABAFF;
+  }
+
+  .base-addproduct-input{
+    width: 628px;
+    height: 44px;
+    background-color: #323332FF;
+    color: #94A3B8;
+    font-size: 14px;
+    border: none;
+  }
+
+  .description-addproduct-input{
+    width: 628px;
+    height: 104px;
+    background-color: #323332FF;
+    box-shadow: none;
+    color: #94A3B8;
+    font-size: 14px;
+    border: none;
+  }
  
+
+  .custom-file-input {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    cursor: pointer;
+    width: 140px;
+  }
+  
+  .custom-file-input input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .file-input {
+    display: inline-block;
+    padding: 8px 16px;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+.all-inputs{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
