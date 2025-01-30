@@ -1,59 +1,13 @@
-/* table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-  }
-  
-  th,
-  td {
-    border: 1px solid #ddd;
-    text-align: center;
-    padding: 8px;
-  }
-  
-  th {
-    background-color: #f4f4f4;
-  }
-  
-  .addProducInput{
-    max-width: 264px;
-    width: 100%;
-  }
-
-  button {
-    margin-top: 0px;
-  }
-
-  .add-product-title{
-    align-items: center;
-    font-weight: bold;
-  }
-
-  .error-text{
-    color: rgb(171, 66, 62);
-    background-color: rgb(244, 222, 225);
-  }
-
-  .add-product-input-photo{
-    width: 177px;
-  }
-
-  .adminProductImg{
-    width: 50px;
-    height: 59px;
-  }
-
-  */
-
   .add-product-block{
-    background-color: #323332FF;
+    background-color: #333;
     border-radius: 22px;
     width: 676px; 
-     height: 768px;
+    height: 748px;
   }
 
   .all-admin-page{
     display: flex;
+    gap: 26px;
   }
 
   .input-addproduct-block{
@@ -68,6 +22,7 @@
     line-height: 40px; 
     font-weight: 700; 
     color: #D2D2D2FF; 
+    font-family: Archivo;
   }
 
   .input-title{
@@ -75,6 +30,7 @@
     line-height: 26px; 
     font-weight: 400; 
     color: #BABABAFF;
+    font-family: Inter;
   }
 
   .base-addproduct-input{
@@ -129,3 +85,102 @@
   gap: 4px;
 }
 
+.add-product-button{
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  font-family: Inter; 
+  width: 628px; 
+  height: 44px; 
+  padding: 0 20px; 
+  font-size: 17px; 
+  line-height: 26px; 
+  font-weight: 400; 
+  border-radius: 28px; 
+  border: 1px solid #D2D2D2FF;
+  cursor: pointer;
+}
+
+.all-product-list{
+  background-color: #333;
+  width: 676px;
+  height: 704px;
+  overflow: hidden;
+  border-radius: 22px;
+  padding: 24px;
+}
+
+.admin-product-img{
+  width: 100px; 
+  height: 100px; 
+  border-radius: 40px; 
+}
+
+.title-list{
+    color: #D2D2D2FF; 
+    font-family: Archivo; 
+    font-size: 26px; 
+    line-height: 40px; 
+    font-weight: 700; 
+}
+
+.product-list-title{
+    font-family: Inter; 
+    font-size: 19px; 
+    line-height: 30px; 
+    font-weight: 400; 
+    color: #D2D2D2FF; 
+}
+
+.product-list-description{
+    font-family: Inter; 
+    font-size: 17px; 
+    line-height: 26px; 
+    font-weight: 400; 
+    color: #999999FF; 
+}
+
+.product-list-price{
+  font-family: Inter; 
+    font-size: 17px; 
+    line-height: 26px; 
+    font-weight: 400; 
+    color: rgb(216, 216, 216); 
+}
+
+.delete-button{
+    width: 110px; 
+    height: 50px;
+    font-family: Inter; 
+    font-size: 17px; 
+    line-height: 26px; 
+    font-weight: 400; 
+    color: black; 
+    background: #05EB33FF; 
+    border-radius: 20px; 
+    cursor: pointer;
+}
+
+.all-el{
+  display: flex;
+  justify-content: space-between;
+  background-color: #444;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.information-block{
+  display: flex;
+  gap: 10px;
+}
+
+.all-el-list{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.error-text{
+  font-size: 20px;
+  color: red;
+}
