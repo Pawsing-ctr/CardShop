@@ -1,4 +1,4 @@
-.petsCategories-icon{
+/* .petsCategories-icon{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -54,4 +54,49 @@
 .product-image{
     height: 205px;
     width: 200px;
+} */
+
+.categories-image{
+    width: 210px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 15px;
+   
+    opacity: 50%;
+}
+
+.all-categories-block{
+    display: flex;
+    gap: 33px;
+}
+
+
+.petsFoodCategories-title{
+    color: #fff;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}
+
+.title-categories{
+    position: absolute;
+    color: #fff;
+    font-family: "Outfit", sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.one-categorie{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.all-petsFoodCategories{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }

@@ -1,4 +1,4 @@
-.header-title{
+/* .header-title{
     font-weight: 600;
     font-size: 30px;
     line-height: 120%;
@@ -111,5 +111,50 @@
 .all-registration-modal{
     display: flex;
     flex-direction: column;
-    /* gap: px; */
+} */
+
+.text-title-header{
+    font-size: 24px;
+    color: #fff;
+}
+
+.all-header-active{
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-button{
+        width: 112px; 
+        height: 36px; 
+        padding: 0 8px; 
+        /* font-family: Inter;  */
+        font-size: 14px; 
+        line-height: 18px; 
+        font-weight: 400; 
+        color: #161616; 
+        background: #FFFFFFFF; 
+        opacity: 1; 
+        border-radius: 17px; 
+        border: 1px solid #D6D6D6FF;
+        cursor: pointer;
+}
+
+.button-block{
+    display: flex;
+    gap: 16px;
+}
+
+.registration-button{
+    /* width: 112px;  */
+    height: 36px; 
+    padding: 0 8px; 
+    font-family: Inter; 
+    font-size: 14px; 
+    line-height: 18px; 
+    font-weight: 400; 
+    color: #161616; 
+    background: #FFFFFFFF; 
+    border-radius: 17px; 
+    border: 1px solid #D6D6D6FF;
+    cursor: pointer;
 }

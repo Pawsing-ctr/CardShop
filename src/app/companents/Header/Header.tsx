@@ -1,53 +1,55 @@
 "use client";
-import React, { useState } from "react";
+// import { Container } from "postcss";
+// import React, { useState } from "react";
 import Container from "../Container/Container";
 import "../Header/Header.css";
-import SearchSvg from "@/app/assets/headerAssets/SearchSvg";
-import BasketSvg from "@/app/assets/headerAssets/BasketSvg";
-import LoginModal from "../Modal/LoginModal/LoginModal";
-import RegistrationModal from "../Modal/RegistrationModal/RegistrationModal";
-import {
-  constRegistrationEmailInput,
-  constRegistrationPasswordInput,
-} from "@/app/constants/constInput";
-import LoginInput from "../LoginInput/LoginInput";
-import { useRouter } from "next/navigation";
+// import SearchSvg from "@/app/assets/headerAssets/SearchSvg";
+// import BasketSvg from "@/app/assets/headerAssets/BasketSvg";
+// import LoginModal from "../Modal/LoginModal/LoginModal";
+// import RegistrationModal from "../Modal/RegistrationModal/RegistrationModal";
+// import {
+//   constRegistrationEmailInput,
+//   constRegistrationPasswordInput,
+// } from "@/app/constants/constInput";
+// import LoginInput from "../LoginInput/LoginInput";
+// import { useRouter } from "next/navigation";
 
-const Header: React.FC = () => {
-  const router = useRouter();
-  const correctAdminDataEmail = "tnechayev@internet.ru";
-  const correctAdminDataPassword = "qwerty";
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isModalOpenRegistration, setIsModalOpenRegistration] = useState(false);
-  const [inputData, setInputData] = useState<Record<string, string>>({});
-  const handleChangeInput = (value: string, name: string) => {
-    setInputData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+const Header = () => {
+  // const router = useRouter();
+  // const correctAdminDataEmail = "tnechayev@internet.ru";
+  // const correctAdminDataPassword = "qwerty";
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [isModalOpenRegistration, setIsModalOpenRegistration] = useState(false);
+  // const [inputData, setInputData] = useState<Record<string, string>>({});
+  // const handleChangeInput = (value: string, name: string) => {
+  //   setInputData((prev) => ({
+  //     ...prev,
+  //     [name]: value,
+  //   }));
+  // };
 
-  const openRegistrationModal = () => {
-    setIsModalOpen(false);
-    setIsModalOpenRegistration(true);
-  };
+  // const openRegistrationModal = () => {
+  //   setIsModalOpen(false);
+  //   setIsModalOpenRegistration(true);
+  // };
 
-  const handleLoginAcc = () => {
-    if (inputData.EmailLogin === correctAdminDataEmail) {
-      if (inputData.PasswordLogin === correctAdminDataPassword) {
-        router.push("/admin");
-        setIsModalOpen(false);
-      }
-    } else {
-      return;
-    }
-  };
+  // const handleLoginAcc = () => {
+  //   if (inputData.EmailLogin === correctAdminDataEmail) {
+  //     if (inputData.PasswordLogin === correctAdminDataPassword) {
+  //       router.push("/admin");
+  //       setIsModalOpen(false);
+  //     }
+  //   } else {
+  //     return;
+  //   }
+  // };
 
   return (
-    <div>
-      <div className="background-color" />
-      <Container>
-        <div className="all-header">
+    // <div>
+    //   <div className="background-color" />
+    // <Container>
+    // {
+    /* <div className="all-header">
           <p className="header-title">New Spring offer</p>
           <div className="header-search-block">
             <input
@@ -127,6 +129,19 @@ const Header: React.FC = () => {
                 </div>
               </div>
             </RegistrationModal>
+          </div>
+        </div> */
+    // }
+    //   </Container>
+    // </div>
+
+    <div>
+      <Container>
+        <div className="all-header-active">
+          <p className="text-title-header">Zooshop</p>
+          <div className="button-block">
+            <button className="registration-button">Зарегистрироваться</button>
+            <button className="header-button">Войти</button>
           </div>
         </div>
       </Container>

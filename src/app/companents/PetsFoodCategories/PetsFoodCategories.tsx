@@ -1,20 +1,20 @@
-"use client";
 import { petsFoodCategoriesConst } from "@/app/constants/petsFoodCategoriesConst";
 import "./PetsFoodCategories.css";
 
 const PetsFoodCategories = () => {
   return (
     <div className="all-petsFoodCategories">
-      <div className="petsFoodCategories-title">
-        <p className="title">Pets Food Categories</p>
-        <p className="petsFood-view">view all</p>
-      </div>
-      <div className="all-petsCategories">
+      <p className="petsFoodCategories-title">Категории</p>
+      <div className="all-categories-block">
         {petsFoodCategoriesConst.map((el) => {
           return (
-            <div key={el.id}>
-              <div className="petsCategories-icon">{el.imgComponent}</div>
-              <p className="categories-text">{el.title}</p>
+            <div className="one-categorie" key={el.id}>
+              <img
+                className="categories-image"
+                src={el.imgBackground}
+                alt="#"
+              />
+              <p className="title-categories">{el.title}</p>
             </div>
           );
         })}
