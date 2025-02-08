@@ -5,6 +5,13 @@ import useEmblaCarousel from "embla-carousel-react";
 import IProduct from "@/app/types/product";
 import "./ProductSlider.css";
 import { getProducts } from "@/app/api/apiProducts";
+import TrolleySVG from "@/app/assets/petsFoodCategoriesAssets/TrolleySVG";
+import { Roboto } from "next/font/google";
+
+const roboto = Roboto({
+  weight: "400",
+  subsets: ["latin"],
+});
 
 const ProductSlider = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
@@ -29,21 +36,42 @@ const ProductSlider = () => {
 
   return (
     <div className="all-product-slider">
-      <div>
-        <p className="slider-text-title">Hand-Picked Foods</p>
+      <div className="slider-title">
+        <p className={`${roboto.className} + product-slider-title`}>
+          Самые проводаемые продукты
+        </p>
+        {products.length < 4 ? (
+          ""
+        ) : (
+          <div>
+            <button className="" onClick={scrollPrev}>
+              &#8592;
+            </button>
+            <button className="" onClick={scrollNext}>
+              &#8594;
+            </button>
+          </div>
+        )}
       </div>
-      {products.length < 6 ? (
+      {products.length < 4 ? (
         <div className="slider-product">
           {products.map((product) => (
-            <div key={product.id}>
+            <div className="product-element" key={product.id}>
               <img
                 src={product.photo || "/placeholder.svg"}
                 alt={product.name}
                 className="product-image"
               />
-              <p className="product-name">{product.name}</p>
-              <p className="product-description">{product.description}</p>
-              <p className="product-price">{product.price} ₽</p>
+              <div className="all-product-active">
+                <div className="all-product-information">
+                  <p className="product-name">{product.name}</p>
+                  <p className="product-price">{product.price} ₽</p>
+                </div>
+                {/* <p className="product-description">{product.description}</p> */}
+                <div className="trolley-img">
+                  <TrolleySVG />
+                </div>
+              </div>
             </div>
           ))}
         </div>
@@ -51,31 +79,25 @@ const ProductSlider = () => {
         <div className="product-list" ref={emblaRef}>
           <div className="slider-product">
             {products.map((product) => (
-              <div key={product.id}>
+              <div className="product-element" key={product.id}>
                 <img
                   src={product.photo || "/placeholder.svg"}
                   alt={product.name}
                   className="product-image"
                 />
-                <p className="product-name">{product.name}</p>
-                <p className="product-description">{product.description}</p>
-                <p className="product-price">{product.price} ₽</p>
+                <div className="all-product-active">
+                  <div className="all-product-information">
+                    <p className="product-name">{product.name}</p>
+                    <p className="product-price">{product.price} ₽</p>
+                  </div>
+                  {/* <p className="product-description">{product.description}</p> */}
+                  <div className="trolley-img">
+                    <TrolleySVG />
+                  </div>
+                </div>
               </div>
             ))}
           </div>
-        </div>
-      )}
-
-      {products.length < 6 ? (
-        ""
-      ) : (
-        <div>
-          <button className="" onClick={scrollPrev}>
-            &#8592;
-          </button>
-          <button className="" onClick={scrollNext}>
-            &#8594;
-          </button>
         </div>
       )}
     </div>

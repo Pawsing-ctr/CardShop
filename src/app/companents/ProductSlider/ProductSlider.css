@@ -1,6 +1,9 @@
 .product-image{
-  width: 200px;
-  height: 200px;
+  width: 246px;
+  height: 246px;
+  object-fit: cover;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
 .slider-product{
@@ -8,48 +11,52 @@
   gap: 50px;
 }
 
-.all-product-slider{
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  padding: 30px;
-  border: 1px solid #dee2e6;
-  border-radius: 10px;
-}
-
-.product-description,
-.product-name{
+.product-name,
+.product-description{
   font-weight: 500;
   font-size: 14px;
   line-height: 120%;
-  color: #362526;
+  color: #fff;
 }
 
 .product-price{
   font-weight: 600;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 120%;
-  color: #362526;
+  color: #fff;
 }
 
-.slider-text-title{
-font-weight: 700;
-font-size: 24px;
-line-height: 120%;
-text-transform: capitalize;
-color: #362526;
+.product-slider-title{
+  color: #fff;
+  font-size: 30px;
+  letter-spacing: 1.2px;
 }
 
-.flash-sale-offer{
+.slider-title,
+.all-product-active{
+  display: flex;
+  justify-content: space-between;
+}
+
+.all-product-information{
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 4px;
 }
 
-.flash-sale-title{
-font-weight: 500;
-font-size: 24px;
-line-height: 120%;
-color: #fff;
+.all-product-slider{
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.product-element{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.trolley-img{
+  cursor: pointer;
 }
