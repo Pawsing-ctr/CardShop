@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
+*{
+  font-family: "Source Code Pro",serif;
+}
+
+.all-footer-text{
+  display: flex;
+  gap: 100px;
+}
+
+
+.footer-text-block{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.all-home-footer{
+  display: flex;
+  gap: 380px;
+}
+
+
+.soc-title{
+  font-weight: 700;
+  
+}
+
+.footer-text{
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.footer-title{
+  color: #fff;
+  font-size: 32px;
+  cursor: pointer;
+}

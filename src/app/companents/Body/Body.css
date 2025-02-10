@@ -1,5 +1,11 @@
 .all-page-content{
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 40px;
+}
+
+.slider-and-nav{
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
 }

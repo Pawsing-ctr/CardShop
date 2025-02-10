@@ -60,3 +60,19 @@
 .trolley-img{
   cursor: pointer;
 }
+
+.background-slide{
+  position: absolute;
+  background-color: #2d2d2d;
+  /* height: 100%; */
+  height: 650px;
+  width: 100%;
+  top: 75%;
+  left: 0;
+  z-index: -1;
+  border-radius: 20px;
+}
+
+.popular-slider{
+  position: relative;
+}

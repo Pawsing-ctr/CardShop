@@ -13,7 +13,7 @@ const roboto = Roboto({
   subsets: ["latin"],
 });
 
-const ProductSlider = () => {
+const ProductSlider = ({ className = "" }) => {
   const [products, setProducts] = useState<IProduct[]>([]);
   const [emblaRef, emblaApi] = useEmblaCarousel();
 
@@ -35,7 +35,8 @@ const ProductSlider = () => {
   };
 
   return (
-    <div className="all-product-slider">
+    <div className={`all-product-slider ${className}`}>
+      <div className="background-slide" />
       <div className="slider-title">
         <p className={`${roboto.className} + product-slider-title`}>
           Самые проводаемые продукты
