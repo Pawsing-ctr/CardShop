@@ -7,6 +7,7 @@ import "./ProductSlider.css";
 import { getProducts } from "@/app/api/apiProducts";
 import TrolleySVG from "@/app/assets/petsFoodCategoriesAssets/TrolleySVG";
 import { Roboto } from "next/font/google";
+import Link from "next/link";
 
 const roboto = Roboto({
   weight: "400",
@@ -58,11 +59,13 @@ const ProductSlider = ({ className = "" }) => {
         <div className="slider-product">
           {products.map((product) => (
             <div className="product-element" key={product.id}>
-              <img
-                src={product.photo || "/placeholder.svg"}
-                alt={product.name}
-                className="product-image"
-              />
+              <Link href={`${product.id}`}>
+                <img
+                  src={`http://localhost:3005/api/products/${product.id}/image`}
+                  alt={product.name}
+                  className="product-image"
+                />
+              </Link>
               <div className="all-product-active">
                 <div className="all-product-information">
                   <p className="product-name">{product.name}</p>
@@ -82,7 +85,7 @@ const ProductSlider = ({ className = "" }) => {
             {products.map((product) => (
               <div className="product-element" key={product.id}>
                 <img
-                  src={product.photo || "/placeholder.svg"}
+                  src={`http://localhost:3005/api/products/${product.id}/image`}
                   alt={product.name}
                   className="product-image"
                 />

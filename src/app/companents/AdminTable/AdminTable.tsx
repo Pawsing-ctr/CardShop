@@ -185,7 +185,7 @@ const AdminTable = () => {
             <div className="all-el" key={product.id}>
               <div className="information-block">
                 <img
-                  src={product.photo || "/placeholder.svg"}
+                  src={`http://localhost:3005/api/products/${product.id}/image`}
                   alt={product.name}
                   className="admin-product-img"
                 />

@@ -1,7 +1,7 @@
 import React from "react";
 import "./FooterHomePage.css";
 
-const footerHomePage = () => {
+const FooterHomePage = () => {
   return (
     <div className="all-home-footer">
       <p className="footer-title">ZooShop</p>
@@ -29,4 +29,4 @@ const footerHomePage = () => {
   );
 };
 
-export default footerHomePage;
+export default FooterHomePage;
