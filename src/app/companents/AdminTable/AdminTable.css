@@ -1,13 +1,7 @@
-  .add-product-block{
-    background-color: #333;
-    border-radius: 22px;
-    width: 676px; 
-    height: 748px;
-  }
-
   .all-admin-page{
     display: flex;
-    gap: 26px;
+    gap: 20px;
+    justify-content: space-between;
   }
 
   .input-addproduct-block{
@@ -34,7 +28,7 @@
   }
 
   .base-addproduct-input{
-    width: 628px;
+    width: 100%;
     height: 44px;
     background-color: #323332FF;
     color: #94A3B8;
@@ -43,7 +37,7 @@
   }
 
   .description-addproduct-input{
-    width: 628px;
+    width: 100%;
     height: 104px;
     background-color: #323332FF;
     box-shadow: none;
@@ -90,7 +84,7 @@
   align-items: center; 
   justify-content: center; 
   font-family: Inter; 
-  width: 628px; 
+  width: 100%; 
   height: 44px; 
   padding: 0 20px; 
   font-size: 17px; 
@@ -99,15 +93,6 @@
   border-radius: 28px; 
   border: 1px solid #D2D2D2FF;
   cursor: pointer;
-}
-
-.all-product-list{
-  background-color: #333;
-  width: 676px;
-  height: 704px;
-  overflow: hidden;
-  border-radius: 22px;
-  padding: 24px;
 }
 
 .admin-product-img{
@@ -182,6 +167,6 @@
 }
 
 .error-text{
-  font-size: 20px;
-  color: red;
+  font-size: 14px;
+  color: rgb(192, 5, 5);
 }

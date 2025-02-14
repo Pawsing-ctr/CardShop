@@ -7,6 +7,8 @@ import { createProduct, getProducts } from "@/app/api/apiProducts";
 import type IProduct from "@/app/types/product";
 import $api from "@/app/api/$api";
 import { productsPath } from "@/app/api/apiProducts/productsPath";
+import PageBlockWrapper from "../PageBlockWrapper/PageBlockWrapper";
+import AdminCardBlock from "../AdminCardBlock/AdminCardBlock";
 
 const productScheme = z.object({
   id: z
@@ -110,104 +112,107 @@ const AdminTable = () => {
   };
 
   return (
-    <div className="all-admin-page">
-      <div className="add-product-block">
-        <form className="input-addproduct-block">
-          <p className="title-add-product">Добавить новый продукт</p>
-          <div className="all-inputs">
-            <div>
-              <p className="input-title">Введите номер продукта</p>
-              <input
-                placeholder="Вводить тут..."
-                className="base-addproduct-input"
-                name="id"
-                type="number"
-                value={newProduct.id}
-                onChange={handleInputChange}
-              />
-              <p className="error-text">{errors.id}</p>
-            </div>
-            <div>
-              <p className="input-title">Введите название продукта</p>
-              <input
-                placeholder="Вводить тут..."
-                className="base-addproduct-input"
-                type="text"
-                name="name"
-                value={newProduct.name}
-                onChange={handleInputChange}
-              />
-              <p className="error-text">{errors.name}</p>
-            </div>
-            <div>
-              <p className="input-title">Введите описание продукта</p>
-              <input
-                placeholder="Вводить тут..."
-                className="description-addproduct-input"
-                type="text"
-                name="description"
-                value={newProduct.description}
-                onChange={handleInputChange}
-              />
-              <p className="error-text">{errors.description}</p>
-            </div>
-            <div>
-              <p className="input-title">Введите цену продукта</p>
-              <input
-                placeholder="Вводить тут..."
-                className="base-addproduct-input"
-                type="number"
-                name="price"
-                value={newProduct.price}
-                onChange={handleInputChange}
-              />
-              <p className="error-text">{errors.price}</p>
-            </div>
-            <div className="custom-file-input">
-              <input
-                onChange={handleFileChange}
-                name="image"
-                type="file"
-                className="file-input"
-              />
-              <span className="file-input">Выберите файл</span>
-            </div>
-          </div>
-          <button onClick={handleSubmit} className="add-product-button">
-            Добавить продукт
-          </button>
-        </form>
-      </div>
-      <div className="all-product-list">
-        <p className="title-list">Список продуктов</p>
-        <div className="all-el-list">
-          {products.map((product) => (
-            <div className="all-el" key={product.id}>
-              <div className="information-block">
-                <img
-                  src={`http://localhost:3005/api/products/${product.id}/image`}
-                  alt={product.name}
-                  className="admin-product-img"
+    <PageBlockWrapper style={{ flex: 1 }}>
+      <div className="all-admin-page">
+        <AdminCardBlock>
+          <form className="input-addproduct-block">
+            <p className="title-add-product">Добавить новый продукт</p>
+            <div className="all-inputs">
+              <div>
+                <p className="input-title">Введите номер продукта</p>
+                <input
+                  placeholder="Вводить тут..."
+                  className="base-addproduct-input"
+                  name="id"
+                  type="number"
+                  value={newProduct.id}
+                  onChange={handleInputChange}
                 />
-                <div className="text-block">
-                  <p className="product-list-title">{product.name}</p>
-                  <p className="product-list-description">
-                    {product.description}
-                  </p>
-                  <p className="product-list-price">$ {product.price}</p>
-                </div>
+                <p className="error-text">{errors.id}</p>
               </div>
-              <button
-                className="delete-button"
-                onClick={() => handleDeleteProduct(product.id)}
-              >
-                Удалить
-              </button>
+              <div>
+                <p className="input-title">Введите название продукта</p>
+                <input
+                  placeholder="Вводить тут..."
+                  className="base-addproduct-input"
+                  type="text"
+                  name="name"
+                  value={newProduct.name}
+                  onChange={handleInputChange}
+                />
+                <p className="error-text">{errors.name}</p>
+              </div>
+              <div>
+                <p className="input-title">Введите описание продукта</p>
+                <input
+                  placeholder="Вводить тут..."
+                  className="description-addproduct-input"
+                  type="text"
+                  name="description"
+                  value={newProduct.description}
+                  onChange={handleInputChange}
+                />
+                <p className="error-text">{errors.description}</p>
+              </div>
+              <div>
+                <p className="input-title">Введите цену продукта</p>
+                <input
+                  placeholder="Вводить тут..."
+                  className="base-addproduct-input"
+                  type="number"
+                  name="price"
+                  value={newProduct.price}
+                  onChange={handleInputChange}
+                />
+                <p className="error-text">{errors.price}</p>
+              </div>
+              <div className="custom-file-input">
+                <input
+                  onChange={handleFileChange}
+                  name="image"
+                  type="file"
+                  className="file-input"
+                />
+                <span className="file-input">Выберите файл</span>
+              </div>
             </div>
-          ))}
-        </div>
+            <button onClick={handleSubmit} className="add-product-button">
+              Добавить продукт
+            </button>
+          </form>
+        </AdminCardBlock>
+        <AdminCardBlock>
+          <p className="title-list">Список продуктов</p>
+          <div className="all-el-list">
+            {products.map((product) => (
+              <div className="all-el" key={product.id}>
+                <div className="information-block">
+                  <img
+                    src={`http://localhost:3005/api/products/${product.id}/image`}
+                    alt={product.name}
+                    className="admin-product-img"
+                  />
+                  <div className="text-block">
+                    <p className="product-list-title">{product.name}</p>
+                    <p className="product-list-description">
+                      {product.description}
+                    </p>
+                    <p className="product-list-price">$ {product.price}</p>
+                  </div>
+                </div>
+                <button
+                  className="delete-button"
+                  onClick={() => handleDeleteProduct(product.id)}
+                >
+                  Удалить
+                </button>
+              </div>
+            ))}
+          </div>
+        </AdminCardBlock>
+        {/* </div> */}
       </div>
-    </div>
+    </PageBlockWrapper>
   );
 };
 

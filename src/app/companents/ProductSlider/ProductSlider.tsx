@@ -37,7 +37,7 @@ const ProductSlider = ({ className = "" }) => {
 
   return (
     <div className={`all-product-slider ${className}`}>
-      <div className="background-slide" />
+      {/* <div className="background-slide" /> */}
       <div className="slider-title">
         <p className={`${roboto.className} + product-slider-title`}>
           Самые проводаемые продукты
