@@ -3,6 +3,7 @@ import IProduct from "@/app/types/product";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import "./CardElement.css";
 
 const CardElement = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
@@ -22,9 +23,9 @@ const CardElement = () => {
   };
   return (
     <div className="card-element">
-      <div>
-        <Link href={"/"}>
-          <p>Вернуться</p>
+      <div className="img-block">
+        <Link className="back-to-home" href={"/"}>
+          <p className="back-to-home">Вернуться назад</p>
         </Link>
         <img
           className="card-img"

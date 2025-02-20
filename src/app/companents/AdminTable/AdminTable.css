@@ -36,7 +36,7 @@
     border: none;
   }
 
-  .description-addproduct-input{
+  .description-addproduct-textarea{
     width: 100%;
     height: 104px;
     background-color: #323332FF;
@@ -44,6 +44,7 @@
     color: #94A3B8;
     font-size: 14px;
     border: none;
+    max-width: 677px;
   }
  
 
@@ -108,6 +109,7 @@
     font-size: 26px; 
     line-height: 40px; 
     font-weight: 700; 
+    text-align: center;
 }
 
 .product-list-title{
@@ -164,6 +166,8 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  max-height: 710px;
+  height: 100%;
 }
 
 .error-text{

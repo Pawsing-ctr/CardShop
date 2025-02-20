@@ -1,0 +1,13 @@
+.back-to-home{
+  font-size: 20px;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+}
+
+.img-block{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}

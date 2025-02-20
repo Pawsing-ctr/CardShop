@@ -1,0 +1,63 @@
+.error-message{
+  color: rgb(170, 11, 11);
+  font-size: 12px;
+}
+
+.input-content{
+  position: relative;
+}
+
+.placeholder-SVG{
+  position: absolute;
+  left: 0;
+  bottom: 0
+}
+
+.registration-input-title{
+  color: #d8d8d8;
+  font-weight: 400;
+  font-size: 11px;
+}
+
+.registration-input{
+  border: none;
+  border-bottom: 2px solid grey;
+  background: none;
+  height: 26px;
+  width: 100%;
+  outline:none;
+  color: #fff;
+}
+
+.registration-input::placeholder{
+  padding-left: 25px;
+  padding-bottom: 10px;
+}
+
+.registration-input:focus::placeholder{
+  color: transparent;
+}
+
+.active{
+  border-bottom: 2px solid rgb(100, 10, 10);
+}
+
+.all-block-content{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.registration-title{
+  color: #fff;
+  font-size: 24px;
+}
+
+.registration-description{
+  color: #fff;
+  font-size: 14px;
+}
+
+.link-title{
+  color: rgb(85, 85, 255);
+}

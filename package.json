@@ -13,6 +13,7 @@
     "axios": "^1.7.9",
     "embla-carousel": "^8.5.2",
     "embla-carousel-react": "^8.5.2",
+    "framer-motion": "^12.4.3",
     "next": "15.0.3",
     "pg": "^8.13.2",
     "react": "^18.3.1",

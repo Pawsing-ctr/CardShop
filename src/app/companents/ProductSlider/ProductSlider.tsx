@@ -37,7 +37,6 @@ const ProductSlider = ({ className = "" }) => {
 
   return (
     <div className={`all-product-slider ${className}`}>
-      {/* <div className="background-slide" /> */}
       <div className="slider-title">
         <p className={`${roboto.className} + product-slider-title`}>
           Самые проводаемые продукты
@@ -84,17 +83,18 @@ const ProductSlider = ({ className = "" }) => {
           <div className="slider-product">
             {products.map((product) => (
               <div className="product-element" key={product.id}>
-                <img
-                  src={`http://localhost:3005/api/products/${product.id}/image`}
-                  alt={product.name}
-                  className="product-image"
-                />
+                <Link href={`${product.id}`}>
+                  <img
+                    src={`http://localhost:3005/api/products/${product.id}/image`}
+                    alt={product.name}
+                    className="product-image"
+                  />
+                </Link>
                 <div className="all-product-active">
                   <div className="all-product-information">
                     <p className="product-name">{product.name}</p>
                     <p className="product-price">{product.price} ₽</p>
                   </div>
-                  {/* <p className="product-description">{product.description}</p> */}
                   <div className="trolley-img">
                     <TrolleySVG />
                   </div>
