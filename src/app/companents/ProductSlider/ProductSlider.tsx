@@ -70,7 +70,6 @@ const ProductSlider = ({ className = "" }) => {
                   <p className="product-name">{product.name}</p>
                   <p className="product-price">{product.price} ₽</p>
                 </div>
-                {/* <p className="product-description">{product.description}</p> */}
                 <div className="trolley-img">
                   <TrolleySVG />
                 </div>

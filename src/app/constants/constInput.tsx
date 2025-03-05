@@ -18,44 +18,6 @@ interface IAdminAccData {
   adminAccPassword: string;
 }
 
-// export const constLoginInput: IConstModalInput[] = [
-//   {
-//     id: 1,
-//     title: "Почта",
-//     textClassName: "login-input-title",
-//     inputClassName: "login-input",
-//     type: "text",
-//     inputName: "EmailLogin",
-//   },
-//   {
-//     id: 2,
-//     title: "Пароль",
-//     textClassName: "login-input-title",
-//     inputClassName: "login-input",
-//     type: "password",
-//     inputName: "PasswordLogin",
-//   },
-// ];
-
-// export const constRegistrationEmailInput: IConstModalInput[] = [
-// {
-//   id: 1,
-//   title: "Введите почту",
-//   textClassName: "registration-input-title",
-//   inputClassName: "registration-input",
-//   type: "text",
-//   inputName: "EmailRegist",
-// },
-// {
-//   id: 2,
-//   title: "Напишите код с почты",
-//   textClassName: "registration-input-title",
-//   inputClassName: "registration-input",
-//   type: "text",
-//   inputName: "CodAcces",
-// },
-// ];
-
 export const constRegistrationPasswordInput: IConstModalInput[] = [
   {
     id: 1,

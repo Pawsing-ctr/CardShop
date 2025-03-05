@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./QuantityElement.css";
 
 const QuantityElement = () => {
   const [quantityProduct, setQuantityProduct] = useState(0);

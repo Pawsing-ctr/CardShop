@@ -1,13 +1,61 @@
 .back-to-home{
+  text-decoration: none;
   font-size: 20px;
   color: #fff;
   text-decoration: none;
   border: none;
+  max-width: 200px;
+}
+
+.back-to-home:visited{
+  text-decoration: none;
+  color: #161616;
 }
 
 .img-block{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
+  gap: 20px;
+}
+
+.card-element{
+  display: flex;
+  align-items: center;
+  gap: 33px;
+}
+
+.card-img{
+  width: 350px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.card-text-block{
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  max-width: 450px;
+}
+
+.card-title{
+  color: #fff;
+  font-size: 25px;
+}
+
+
+.card-description{
+  font-size: 20px;
+  color: #fff;
+  overflow-wrap: break-word;
+  white-space: normal;
+  max-width: 100%;
+}
+
+.card-price{
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 4px;
+  text-align: center;
 }

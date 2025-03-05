@@ -1,0 +1,15 @@
+.checkbox-content{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.checkbox-text{
+  color: #fff;
+  font-size: 17px;
+}
+
+.checkbox-block{
+  display: flex;
+  gap: 10px;
+}
