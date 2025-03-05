@@ -1,5 +1,8 @@
+"use client";
+
 import { constRegistrationPasswordInput } from "@/app/constants/constInput";
-import React, { useState } from "react";
+import type React from "react";
+import { useState } from "react";
 import "./RegistrationInput.css";
 import Link from "next/link";
 
@@ -34,28 +37,36 @@ const RegistrationInput: React.FC<IRegistrationInput> = ({
 
       {constRegistrationPasswordInput.map((el) => {
         const errorMessage = errors[el.inputName];
+        const inputValue = newUser[el.inputName];
+        const isInputActive = isActive === el.id;
+        const hasValue = !!inputValue;
+
         return (
           <div className="all-block-content" key={el.id}>
             <p className={el.textClassName}>{el.title}</p>
             <div className="input-content">
               <input
                 onClick={() => handleActiveInput(el.id)}
-                value={newUser[el.inputName]}
+                value={inputValue}
                 onChange={(e) =>
                   handleChangeInput(e.target.value, el.inputName)
                 }
                 onBlur={() => setIsActive(0)}
-                className={
-                  isActive !== el.id
-                    ? el.inputClassName
-                    : `${el.inputClassName} active`
-                }
+                className={`
+                  ${el.inputClassName} 
+                  ${isInputActive ? "active" : ""} 
+                  ${hasValue ? "has-value" : ""}
+                `}
                 type={el.type}
                 placeholder={el.placeholder}
               />
-              {isActive === el.id ? null : (
-                <div className="placeholder-SVG">{el.placeholderSVG}</div>
-              )}
+              <div
+                className={`placeholder-SVG ${
+                  isInputActive || hasValue ? "hidden" : ""
+                }`}
+              >
+                {el.placeholderSVG}
+              </div>
             </div>
             {errorMessage && <p className="error-message">{errorMessage}</p>}
           </div>

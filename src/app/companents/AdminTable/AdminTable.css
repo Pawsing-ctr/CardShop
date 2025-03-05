@@ -126,6 +126,9 @@
     line-height: 26px; 
     font-weight: 400; 
     color: #999999FF; 
+    overflow-wrap: break-word;
+   white-space: normal;
+   max-width: 460px;
 }
 
 .product-list-price{

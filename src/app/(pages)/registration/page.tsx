@@ -8,11 +8,14 @@ import { handleSchemeCheckError } from "@/app/schemeErrorFunc/schemeErrorFunc";
 import React, { useState } from "react";
 import { z } from "zod";
 import "./page.css";
+import FooterHomePage from "@/app/companents/FooterHomePage/FooterHomePage";
+import { useRouter } from "next/navigation";
 
 const ClientComponent = () => {
   const [newUser, setNewUser] = useState(initialUser);
   const [users, setUsers] = useState<INewUser[]>([]);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const router = useRouter();
 
   const registrationUserScheme = z
     .object({
@@ -65,6 +68,7 @@ const ClientComponent = () => {
     } catch (error) {
       console.error("Ошибка при создании пользователя:", error);
     }
+    router.push("/");
   };
   return (
     <PageBlockWrapper>
@@ -94,6 +98,7 @@ const ClientComponent = () => {
           </form>
         </div>
       </div>
+      <FooterHomePage />
     </PageBlockWrapper>
   );
 };

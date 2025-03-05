@@ -6,6 +6,7 @@ import LoginModal from "../Modal/LoginModal/LoginModal";
 // import { adminAccData } from "@/app/constants/constInput";
 // import { useRouter } from "next/navigation";
 import PageBlockWrapper from "../PageBlockWrapper/PageBlockWrapper";
+import Link from "next/link";
 
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -40,13 +41,17 @@ const Header = () => {
   return (
     <PageBlockWrapper>
       <div className="all-header-active">
-        <p className="text-title-header">Zooshop</p>
+        <Link href={"/"} className="text-title-header">
+          Zooshop
+        </Link>
         <div className="button-block">
           <button
             onClick={openRegistrationModal}
             className="registration-button"
           >
-            Зарегистрироваться
+            <Link className="registration-link" href={"/registration"}>
+              Зарегистрироваться
+            </Link>
           </button>
           <button
             onClick={() => setIsModalOpen(true)}
